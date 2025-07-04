@@ -2,29 +2,59 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>JARVIS AI Interface</title>
+  <title>JARVIS SHORTS</title>
   <style>
     body {
       margin: 0;
-      background: black;
+      background-color: black;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
     }
-    video {
-      height: 100vh;
+
+    #videoContainer {
+      position: relative;
+      height: 600px; /* TikTok short height */
       aspect-ratio: 9 / 16;
-      border: none;
       box-shadow: 0 0 30px cyan;
+      overflow: hidden;
+      border-radius: 20px;
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
+    }
+
+    #overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      pointer-events: none;
+      box-shadow: inset 0 0 20px cyan;
+      border-radius: 20px;
     }
   </style>
 </head>
 <body>
-  <video controls playsinline>
-    <source src="https://github.com/Sohail-Munir/Jarvis-AI/raw/main/JARVIS%20-%20Marvel's%20Iron%20Man%203%20Second%20Screen%20Experience%20-%20Trailer%20(online-video-cutter.com)_2.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+  <div id="videoContainer">
+    <video id="myVideo" playsinline>
+      <source src="https://github.com/Sohail-Munir/Jarvis-AI/raw/main/JARVIS%20-%20Marvel's%20Iron%20Man%203%20Second%20Screen%20Experience%20-%20Trailer%20(online-video-cutter.com)_2.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div id="overlay"></div>
+  </div>
+
+  <script>
+    // Sound on click
+    document.body.addEventListener('click', () => {
+      const video = document.getElementById('myVideo');
+      video.play();
+    });
+  </script>
 </body>
 </html>
